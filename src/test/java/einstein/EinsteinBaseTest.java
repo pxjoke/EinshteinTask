@@ -1,6 +1,5 @@
-package einshtein;
+package einstein;
 
-import einstein.EinsteinBase;
 import net.sf.javabdd.BDD;
 import org.junit.Before;
 import org.junit.Test;
