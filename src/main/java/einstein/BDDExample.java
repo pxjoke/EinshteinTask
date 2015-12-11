@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by ginva_000 on 04.12.2015.
  */
-public class Example {
+public class BDDExample {
     public static void main(String[] args) {
         BDDFactory factory = MicroFactory.init(1000, 100);
         factory.setVarNum(6);
