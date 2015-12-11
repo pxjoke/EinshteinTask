@@ -1,3 +1,5 @@
+package einstein;
+
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;
 import net.sf.javabdd.BDDPairing;
