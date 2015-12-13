@@ -2,6 +2,7 @@ package einstein;
 
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;
+import net.sf.javabdd.JFactory;
 import net.sf.javabdd.MicroFactory;
 
 import java.util.ArrayList;
@@ -19,12 +20,16 @@ public class EinsteinBase {
     int columns;
     int K_SIZE;
     int K;
-    BDDFactory factory = MicroFactory.init(10000, 1000);
+//    BDDFactory factory = MicroFactory.init(10000000, 10000000);
+    BDDFactory factory;
     BDD[][][] p;
     BDD task;
     BDD[] k;
 
-    public void init() {
+    public void init(int size) {
+        if(size == 0) factory = JFactory.init(10000, 1000);
+        else factory = JFactory.init(10000000, 10000000);
+        factory.autoReorder(factory.REORDER_WIN3ITE);
         initVars();
         factory.setVarNum(N_VAR);
         task = factory.one();
@@ -55,6 +60,7 @@ public class EinsteinBase {
     }
 
     public void limit6() {
+
         for (int item = 0; item < N; item++) {
             BDD[] tmp = new BDD[M];
             for (int property = 0; property < M; property++) {
@@ -187,8 +193,10 @@ public class EinsteinBase {
                 }
                 System.out.print(";   ");
             }
+            System.out.println("");
         }
         System.out.println("");
+        System.out.println(solutions.size() + " solutions");
     }
 
     public BDD[] sum(BDD[] a, BDD[] b) {
@@ -240,7 +248,7 @@ public class EinsteinBase {
         for (int item = 0; item < N; item++) {
             for (int property = 0; property < M; property++) {
                 for (int i = 0; i < LOG_N; i++) {
-                    tmp[i] = factory.ithVar((N * item + property) * 2+i);
+                    tmp[i] = factory.ithVar((M * item + property) * LOG_N+i);
                 }
                 sum = sum(sum, tmp);
             }

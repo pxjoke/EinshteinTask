@@ -18,7 +18,7 @@ public class EinsteinBaseTest {
         e.setRows(1);
         e.setN(3);
         e.setM(3);
-        e.init();
+        e.init(0);
     }
 
     @Test
